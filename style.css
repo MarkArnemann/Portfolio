@@ -217,6 +217,13 @@ header {
   font-size: 16px;
 }
 
+.ProjectCard a {
+  font-family: "League_Spartan-Regular";
+  color: #ddd;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
 /* FOOTER */
 .Footer {
   background-color: #2c2e36;
