@@ -1,0 +1,229 @@
+@font-face {
+  font-family: "League_Spartan-Regular";
+  src: url("Assets/Fonts/League_Spartan/static/LeagueSpartan-Regular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "League_Spartan-Bold";
+  src: url("Assets/Fonts/League_Spartan/static/LeagueSpartan-SemiBold.ttf")
+    format("truetype");
+}
+
+body {
+  background-image: url("Assets/platte.jpg");
+  background-size: 15%;
+  background-color: #2c2e36;
+  background-repeat: repeat-x repeat-y;
+  margin: 0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* simpler layout */
+  background-color: #2c2e36;
+  align-items: center;
+  padding: 10px;
+}
+
+.Portrait {
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .IntroCard {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .IntroText {
+    text-align: center;
+  }
+
+  .Portrait img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* HeadLogo in column 2 */
+.HeadLogo {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.HeadLogo h3 {
+  font-family: "League_Spartan-Bold";
+  font-size: 42px;
+  color: #f5bc11;
+  margin-bottom: -15px;
+}
+
+.HeadLogo p {
+  font-family: "League_Spartan-Regular";
+  font-size: 24px;
+  color: #f5bc11;
+}
+
+/* HeadReferences in column 3 */
+.HeadReferences {
+  grid-column: 3;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.HeadReferences ul {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.HeadReferences li {
+  display: flex;
+  align-items: center;
+  filter: invert(85%) sepia(88%) saturate(1000%) hue-rotate(0) brightness(450%)
+    contrast(100%);
+  transform: scale(2);
+}
+
+.HeadReferences li:hover {
+  display: flex;
+  align-items: center;
+  filter: invert(85%) sepia(88%) saturate(1000%) hue-rotate(0) brightness(500%)
+    contrast(100%);
+  transform: scale(2);
+}
+
+.HeadReferences img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(1.2); /* optional: tint icons */
+}
+
+/* WRAPPER */
+.ContentWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(min(30px, 100%), 1fr));
+}
+
+/* HERO SECTION */
+.HeroSection {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.IntroCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px; /* spacing between image and text */
+  padding: 20px;
+  max-width: 1200px;
+}
+
+/* Make the portrait a circle and left-aligned */
+.Portrait img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #434c75;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Intro text styles */
+.IntroText {
+  text-align: left;
+  line-height: 1.2;
+  max-width: 600px;
+}
+
+.IntroText h1 {
+  font-family: "League_Spartan-Bold";
+  font-size: 48px;
+  color: #f5bc11;
+  margin-bottom: 16px;
+}
+
+.IntroText p {
+  font-family: "League_Spartan-Regular";
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/* PROJECTS SECTION */
+.ProjectsSection {
+  padding: 80px 40px;
+  text-align: center;
+  background-color: #1f2026;
+}
+
+.ProjectsSection h2 {
+  font-family: "League_Spartan-Bold";
+  font-size: 36px;
+  color: #f5bc11;
+  margin-bottom: 40px;
+}
+
+.ProjectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  justify-content: center;
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.ProjectCard {
+  background-color: #2c2e36;
+  padding: 16px;
+  line-height: 1.2;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+}
+
+.ProjectCard:hover {
+  transform: scale(1.03);
+}
+
+.ProjectCard img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.ProjectCard p {
+  font-family: "League_Spartan-Regular";
+  color: #ddd;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+/* FOOTER */
+.Footer {
+  background-color: #2c2e36;
+  padding: 40px 20px;
+  text-align: center;
+  color: #bbb;
+  font-family: "League_Spartan-Regular";
+  font-size: 16px;
+}
