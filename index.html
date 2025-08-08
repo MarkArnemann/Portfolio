@@ -57,67 +57,69 @@
         <!-- Example project card -->
         <div class="ProjectCard">
           <img src="Assets/Images/OrbWars.jpg" alt="Project 1" />
-          <p>OrbWars: A fast-paced multiplayer game.</p>
+          <h3>OrbWars</h3>
+          <p>A fast-paced multiplayer game.</p>
         </div>
         <div class="ProjectCard">
           <img src="Assets/Images/TSD.jpg" alt="Project 2" />
-          <p>Time Shift Detective: A detactive, dialogue heavy game</p>
+          <h3>Time Shift Detective</h3>
+          <p>A detactive, dialogue heavy game</p>
         </div>
-        <!-- Add more cards as needed -->
       </div>
     </div>
 
     <div class="ProjectsSection">
       <h2>Other Projects</h2>
       <div class="ProjectGrid">
-        <!-- Example project card -->
         <div class="ProjectCard">
-          <img src="Assets/Images/punchypirates.gif" alt="punchypirates" />
-          <p>Punchy Pirates: Protect your gold and keep your ship a float!</p>
+          <img src="Assets/Images/punchypirates.gif" alt="Project 3" />
+          <h3>Punchy Pirates</h3>
+          <p>Protect your gold and keep your ship a float!</p>
         </div>
 
         <div class="ProjectCard">
-          <img src="Assets/Images/kamerasystem.gif" alt="Camera System" />
+          <img src="Assets/Images/kamerasystem.gif" alt="Project 4" />
+          <h3>Dialogue Camera System</h3>
           <p>
-            Dialogue Camera System: created as a Bachelor thesis and used in
-            Timeshift Detective. This camera system was developed to get to get
-            the best out of a conversation! Users can setup camera shots inside
-            a setup scene. These are safed, and can then be used for dialouges.
-            But when two characters are walking around dynamically, what happens
-            when the camera suddenly clipps through walls, or has unwanted
-            angles? Well, just let this camera system take care of that!
+            A camera system that allows the actors to stay in all kinds of
+            different positions. Garanteeing a good shot on the current Actor.
           </p>
         </div>
 
         <div class="ProjectCard">
           <img src="Assets/Images/watershader.gif" alt="watershader" />
+          <h3>Water Shader</h3>
           <p>
-            Water Shader: The water shader used in PunchyPiartes. Developed
-            using Unity's Shadergraph with additional hsls functions.
+            The water shader used in PunchyPiartes. Developed using Unity's
+            Shadergraph with additional hsls functions.
           </p>
         </div>
 
         <div class="ProjectCard">
           <img src="Assets/Images/library.png" alt="private library" />
+          <h3>Personal Library</h3>
+
           <p>
+            Sometimes coding can feel redundant when it comes to some
+            operations. Which is why I started to build and maintane my own
+            little library. Feel free to
             <a
               href="https://gitlab.com/Mr.Mark/moa_library/-/tree/5cc6d7764c9d59ded141be0765cdb7c5d0bf9dc4/"
               target="_blank"
-              >Personal Library:</a
-            > Sometimes coding can feel redundant when it comes to some
-            operations. Which is why I started to build and maintane my own
-            little library. Feel free to use it yourself and maybe build up on
-            it!
+              >use it yourself</a
+            >
+            and build up on it!
           </p>
         </div>
 
         <div class="ProjectCard">
           <img src="Assets/Images/morsegame.jpg" alt="morsegame" />
-          <p>The Morse Game: This project was created as a small study project. 
-            The only guidline was, to only have <b>one button</b>! 
-            feel free to try it out yourself on <a
-              href="https://deemodev.itch.io/the-morse-game"
-              target="_blank"
+          <h3>The Morse Game</h3>
+          <p>
+            This project was created as a small study project. The only guidline
+            was, to only have <b>one button</b>! feel free to try it out
+            yourself on
+            <a href="https://deemodev.itch.io/the-morse-game" target="_blank"
               >itch.io</a
             >
           </p>
@@ -125,15 +127,20 @@
 
         <div class="ProjectCard">
           <img src="Assets/Images/Aurora.gif" alt="Aurora Initiative" />
-          <p>Aurora: A small project I started. Its about terraforming a planet to fit human needs, 
-            while already living on the planet. In this project I used <a
+          <h3>Aurora Initiative</h3>
+          <p>
+            A small project I started. Its about terraforming a planet to fit
+            human needs, while already living on the planet. In this project I
+            used
+            <a
               href="https://github.com/bart1259/UnityHexPlanet.git"
               target="_blank"
-              >this</a
+              >this hexagonal planet generation</a
             >
-            hexagonal planet generation code to learn about generating meshes and colliders. 
-            I extendet some scripts, to fit my needs, added vegetation generation as well as the tool 
-            for players to change single or multiple tiles at once, as well as flattening the terrain.
+            code to learn about generating meshes and colliders. I extendet some
+            scripts, to fit my needs, added vegetation generation as well as the
+            tool for players to change single or multiple tiles at once, as well
+            as flattening the terrain.
           </p>
         </div>
         <!-- Add more cards as needed -->
@@ -146,58 +153,81 @@
       </p>
       <p>mark.arnemann@hotmail.de</p>
     </footer>
+    <!-- Overlay Modal -->
+    <div id="projectOverlay" class="overlay">
+      <div class="overlay-content">
+        <span class="overlay-close">&times;</span>
+        <img id="overlayImage" src="" alt="" />
+        <h3 id="overlayTitle"></h3>
+        <p id="overlayDescription"></p>
+      </div>
+    </div>
+
+    <script>
+      // Select elements
+      const overlay = document.getElementById("projectOverlay");
+      const overlayImage = document.getElementById("overlayImage");
+      const overlayTitle = document.getElementById("overlayTitle");
+      const overlayDescription = document.getElementById("overlayDescription");
+      const closeBtn = document.querySelector(".overlay-close");
+
+      const projects = [
+        {
+          title: "OrbWars",
+          img: "Assets/Images/OrbWars.jpg",
+          description:
+            "A fast-paced multiplayer developed by Neox Studio, where players compete in a play room. Developed with Unity and Photon Networking" +
+            "",
+        },
+        {
+          title: "Time Shift Detective",
+          img: "Assets/Images/TSD.jpg",
+          description:
+            "A detective, dialogue-heavy adventure game with time manipulation mechanics to solve complex mysteries.",
+        },
+        {
+          title: "Punchy Pirates",
+          img: "Assets/Images/punchypirates.gif",
+          description: "Multiplayer game",
+        },
+        {
+          title: "Dialogue Camera System",
+          img: "Assets/Images/kamerasystem.gif",
+          description:
+            "Created as a Bachelor thesis and used in Timeshift Detective. This " +
+            "camera system was developed to get to get the best out of a " +
+            "conversation! Users can setup camera shots inside a setup scene. " +
+            "These are safed, and can then be used for dialouges. But when two " +
+            "characters are walking around dynamically, what happens when the " +
+            "camera suddenly clipps through walls, or has unwanted angles? Well, " +
+            "just let this camera system take care of that!",
+        },
+      ];
+
+      // Add click events to project cards
+      document.querySelectorAll(".ProjectCard").forEach((card, index) => {
+        card.addEventListener("click", () => {
+          overlayImage.src = projects[index].img;
+          overlayTitle.textContent = projects[index].title;
+          overlayDescription.textContent = projects[index].description;
+          overlay.style.display = "block";
+          document.body.style.overflow = "hidden"; // Prevent background scroll
+        });
+      });
+
+      // Close overlay
+      closeBtn.addEventListener("click", () => {
+        overlay.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      // Close when clicking outside content
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          overlay.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+    </script>
   </body>
 </html>
-
-<!-- <div class="Card">
-        <div class="content">
-          <div class="image">
-            <img src="Assets/CARD1.jpg" />
-          </div>
-          <h3>DESTROY BOYS</h3>
-          <div class="Date">Di, 06.06.2023</div>
-          <div class="State">Ausverkauft</div>
-          <div class="PoweredBy">Gesponsort von Molotow</div>
-          <pre class="Info">
-Einlass: 19:00
-VVK: 20EUR
-TICKETSmiley face 
-AK: Ausverkauft!</pre>
-          <div class="text">
-            <p>
-              <a>”California punk rock </a>changed my life. It showed me exactly
-              what I want to do and who I want to be,” says Violet Mayugba,
-              guitarist and singer for San Francisco-based punk band DestroyBoys
-              at the age of 15, Mayugba and band co-founder Alexia Roditis were
-              going to show after show, becoming a part of the vibrant
-              Sacramento scene. “Vi and I were both like, ‘Let’s start a band!’”
-              says lead vocalist and guitarist Roditis. “I was going to play
-              drums and Vi was going...
-            </p>
-            <a href="#">mehr...</a>
-          </div>
-        </div>
-      </div>
-      <div class="Card1">
-        <div class="content">
-          <div class="image">
-            <img src="Assets/CARD2.jpg" />
-          </div>
-          <h3>RIPE & RUIN</h3>
-          <div class="Date">Fr, 16.06.2023</div>
-          <div class="PoweredBy1">Support: Miesha and the Spanks Konzert Club
-            MIND MURDERS MAGIC EP RELEASE SHOW
-            Gefördert von Neustart Kultur, Initiative Musik und der BKM</div>
-          <pre class="Info1">
-Einlass: 19:00
-VVK: 17EUR
-TICKET</pre>
-          <div class="text">
-            <p>
-              <a>MIND MURDERS MAGIC EP RELEASE SHOW Mit ihrer neuen EP “MIND MURDERS MAGIC“ begeben sich Ripe & Ruin auf den Weg zu ihren inhaltlichen Wurzeln – und gleichzeitig in das Herz des Zeitgeistes. ...
-                Mehr Infos
-            </p>
-            <a href="#">mehr...</a>
-          </div>
-        </div> -->
-<!-- </div> -->
