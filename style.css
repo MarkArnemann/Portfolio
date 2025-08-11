@@ -239,6 +239,7 @@ header {
   margin-bottom: -5px;
 }
 
+/* Remove the old paragraph style, or keep if you still use it */
 .ProjectCard p {
   font-family: "League_Spartan-Regular";
   color: #ddd;
@@ -246,11 +247,42 @@ header {
   font-size: 16px;
 }
 
-.ProjectCard a {
+/* New list for project info */
+.project-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
   font-family: "League_Spartan-Regular";
   color: #ddd;
-  margin-top: 12px;
-  font-size: 16px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  
+  align-items: center; /* horizontal center */
+  text-align: center; /* center text */
+}
+
+.project-info-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-info-list li .icon {
+  display: inline-block;
+  width: 20px;
+  font-size: 18px;
+  line-height: 1;
+  color: #f5bc11;
+  flex-shrink: 0;
+}
+
+/* Skills text next to icon (no badge) */
+.skills-text {
+  color: #ddd;
+  font-weight: 500;
+  white-space: normal;
 }
 
 /* Overlay Background */
