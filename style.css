@@ -274,7 +274,16 @@ header {
   background: #fff;
   max-width: 700px;
   border-radius: 10px;
-  text-align: center;
+  text-align: left;
+}
+
+.overlay-content h4 {
+  font-family: "League_Spartan-Bold";
+  font-size: 20px;
+  color: #f5bc11;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  text-align: left;
 }
 
 .overlay-content img {

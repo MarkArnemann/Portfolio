@@ -192,7 +192,25 @@
         <span class="overlay-close">&times;</span>
         <img id="overlayImage" src="" alt="" />
         <h3 id="overlayTitle"></h3>
-        <p id="overlayDescription"></p>
+        <div id="overlayBody"></div>
+        <!-- We'll fill this dynamically -->
+      </div>
+    </div>
+
+    <div id="projectOverlay" class="overlay">
+      <div class="overlay-content">
+        <span class="overlay-close">&times;</span>
+        <img id="overlayImage" src="" alt="" />
+        <h3 id="overlayTitle"></h3>
+
+        <h4>Summary</h4>
+        <p id="overlaySummary"></p>
+
+        <h4>About</h4>
+        <p id="overlayAbout"></p>
+
+        <h4>How it works</h4>
+        <p id="overlayHow"></p>
       </div>
     </div>
 
@@ -290,108 +308,166 @@
       const overlay = document.getElementById("projectOverlay");
       const overlayImage = document.getElementById("overlayImage");
       const overlayTitle = document.getElementById("overlayTitle");
-      const overlayDescription = document.getElementById("overlayDescription");
+      const overlayBody = document.getElementById("overlayBody"); // new flexible content container
       const closeBtn = document.querySelector(".overlay-close");
 
       const projects = [
+        // --- Neox style ---
         {
           title: "OrbWars",
           img: "Assets/Images/OrbWars.jpg",
-          description: "A fast-paced multiplayer game developed by Neox Studio",
+          description:  `
+            A flexible camera system for in-game dialogues, built on top of Unity’s Cinemachine. 
+            It lets creators set up precise camera angles, fine-tune their behavior with adjustable boundaries, 
+            choose from multiple shot types, and define fallback options - all to make sure conversations look great from any angle.
+          `,
+          type: "neox",
         },
         {
           title: "Time Shift Detective",
           img: "Assets/Images/TSD.jpg",
           description: "A detective game",
+          type: "neox",
         },
+
+        // --- New style projects ---
         {
           title: "Punchy Pirates",
           img: "Assets/Images/punchypirates.gif",
-          description: "Multiplayer game",
+          summary: "Multiplayer pirate brawler with chaotic battles.",
+          about:
+            "Developed as a fun side project with a focus on simple mechanics but high replayability.",
+          howItWorks:
+            "Players join a match, fight each other using melee attacks, and try to knock opponents into the sea.",
+          type: "full",
         },
         {
           title: "Dialogue Camera System",
           img: "Assets/Images/kamerasystem.gif",
-          description:
-            "Created as a Bachelor thesis and used in Timeshift Detective. This " +
-            "camera system was developed to get to get the best out of a " +
-            "conversation! Users can setup camera shots inside a setup scene. " +
-            "These are safed, and can then be used for dialouges. But when two " +
-            "characters are walking around dynamically, what happens when the " +
-            "camera suddenly clipps through walls, or has unwanted angles? Well, " +
-            "just let this camera system take care of that!",
-        },
+          summary: `
+            A flexible camera system for in-game dialogues, built on top of Unity’s Cinemachine. 
+            It lets creators set up precise camera angles, fine-tune their behavior with adjustable boundaries, 
+            choose from multiple shot types, and define fallback options - all to make sure conversations look great from any angle.
+          `,
 
+          about: `
+            This system started life as my bachelor’s thesis project for <strong>Time Shift Detective</strong> by Neox Studios. 
+            It tackles one of the sneakiest problems in game cinematography: cameras that clip through walls, props, or wandering NPCs. 
+            Characters moving around? Walls suddenly in the way? This system politely handles it before the player ever notices.
+          `,
+
+          howItWorks: `
+            You set up each shot just to your desires — position the camera where you want it, tweak any Cinemachine settings until it feels right, and save. 
+            The system stores your setup in a <strong>ScriptableObject</strong> for quick reuse.<br><br>
+                           
+            <img src="Assets/Images/CameraSystemDetails/Setup01.png" 
+            alt="Camera setup in Unity" 
+            style="width:100%; border-radius:8px; margin:10px 0;"><br>
+
+            Under the hood, it runs two virtual cameras at once:<br><br>
+            <b>The star</b>: showing the current shot.<br>
+            <b>The scout</b>: already checking if the next planned shot is usable.<br><br>
+                  
+            To test a shot, it checks whether all key “points of interest” on the actor (like the head by default, but you can define others) 
+            are inside the camera’s view. If they are — perfect, we roll. If not, the system automatically adjusts the camera within your predefined limits.<br><br>
+                  
+            If no shot within the limits works, it switches to a fallback angle. 
+            And if even the fallback fails (which can happen in ultra-tight close-ups), it cleverly hides the inactive actor 
+            and temporarily places the camera where their head would be — keeping the scene immersive without breaking the shot.<br><br>
+                  
+            <strong>Extra features? Sure:</strong><br>
+            • Multi-actor targeting<br>
+            • Splitscreen mode<br>
+            • Per-shot post-processing<br>
+            • Per-shot lighting tweaks<br><br>
+
+            <img src="Assets/Images/CameraSystemDetails/OverShoulder.png" 
+            alt="Camera setup in Unity" 
+            style="width:100%; border-radius:8px; margin:10px 0;">
+
+            <img src="Assets/Images/CameraSystemDetails/VerticalSplit.png" 
+            alt="Camera setup in Unity" 
+            style="width:100%; border-radius:8px; margin:10px 0;">
+
+            <img src="Assets/Images/CameraSystemDetails/MultiActor.png" 
+            alt="Camera setup in Unity" 
+            style="width:100%; border-radius:8px; margin:10px 0;">
+          `,
+          type: "full",
+        },
         {
           title: "Water Shader",
           img: "Assets/Images/watershader.gif",
-          description:
-            "Created as a Bachelor thesis and used in Timeshift Detective. This " +
-            "camera system was developed to get to get the best out of a " +
-            "conversation! Users can setup camera shots inside a setup scene. " +
-            "These are safed, and can then be used for dialouges. But when two " +
-            "characters are walking around dynamically, what happens when the " +
-            "camera suddenly clipps through walls, or has unwanted angles? Well, " +
-            "just let this camera system take care of that!",
+          summary: "Custom shader to create realistic water effects.",
+          about:
+            "Written in Unity Shader Graph with foam, depth-based coloring, and wave animations.",
+          howItWorks:
+            "Shader blends multiple noise layers for surface waves and applies depth-based transparency for realism.",
+          type: "full",
         },
-
         {
           title: "Personal Library",
           img: "Assets/Images/library.png",
-          description:
-            "Created as a Bachelor thesis and used in Timeshift Detective. This " +
-            "camera system was developed to get to get the best out of a " +
-            "conversation! Users can setup camera shots inside a setup scene. " +
-            "These are safed, and can then be used for dialouges. But when two " +
-            "characters are walking around dynamically, what happens when the " +
-            "camera suddenly clipps through walls, or has unwanted angles? Well, " +
-            "just let this camera system take care of that!",
+          summary: "Personal asset library for quick game development.",
+          about:
+            "Contains scripts, shaders, and prefabs used across multiple projects.",
+          howItWorks:
+            "Import into Unity, drag and drop components, customize parameters to fit each project.",
+          type: "full",
         },
-
         {
           title: "The Morse Game",
           img: "Assets/Images/morsegame.jpg",
-          description:
-            "Created as a Bachelor thesis and used in Timeshift Detective. This " +
-            "camera system was developed to get to get the best out of a " +
-            "conversation! Users can setup camera shots inside a setup scene. " +
-            "These are safed, and can then be used for dialouges. But when two " +
-            "characters are walking around dynamically, what happens when the " +
-            "camera suddenly clipps through walls, or has unwanted angles? Well, " +
-            "just let this camera system take care of that!",
+          summary: "Educational game to learn Morse code.",
+          about:
+            "Players translate text into Morse and vice versa, progressing through difficulty levels.",
+          howItWorks:
+            "Game plays audio beeps and visual signals, and players input their translation.",
+          type: "full",
         },
-
         {
           title: "Aurora Initiative",
           img: "Assets/Images/Aurora.gif",
-          description:
-            "Created as a Bachelor thesis and used in Timeshift Detective. This " +
-            "camera system was developed to get to get the best out of a " +
-            "conversation! Users can setup camera shots inside a setup scene. " +
-            "These are safed, and can then be used for dialouges. But when two " +
-            "characters are walking around dynamically, what happens when the " +
-            "camera suddenly clipps through walls, or has unwanted angles? Well, " +
-            "just let this camera system take care of that!",
+          summary: "Sci-fi strategy game concept with AI-driven events.",
+          about:
+            "Focuses on diplomacy, exploration, and managing interstellar factions.",
+          howItWorks:
+            "Players respond to procedurally generated events while balancing resources and alliances.",
+          type: "full",
         },
         {
           title: "Trash Game",
           img: "Assets/Images/TrashGameGameplay.png",
-          description:
-            "Created as a Bachelor thesis and used in Timeshift Detective. This " +
-            "camera system was developed to get to get the best out of a " +
-            "conversation! Users can setup camera shots inside a setup scene. " +
-            "These are safed, and can then be used for dialouges. But when two " +
-            "characters are walking around dynamically, what happens when the " +
-            "camera suddenly clipps through walls, or has unwanted angles? Well, " +
-            "just let this camera system take care of that!",
+          summary: "Fun waste-sorting mini-game.",
+          about:
+            "Players sort trash into the correct bins under time pressure.",
+          howItWorks:
+            "Drag items into the right bin. The game speeds up over time to increase difficulty.",
+          type: "full",
         },
       ];
 
+      // Add click events to project cards
       document.querySelectorAll(".ProjectCard").forEach((card, index) => {
         card.addEventListener("click", () => {
-          overlayImage.src = projects[index].img;
-          overlayTitle.textContent = projects[index].title;
-          overlayDescription.textContent = projects[index].description;
+          const project = projects[index];
+          overlayImage.src = project.img;
+          overlayTitle.textContent = project.title;
+
+          // Fill overlay depending on project type
+          if (project.type === "neox") {
+            overlayBody.innerHTML = `<p>${project.description}</p>`;
+          } else if (project.type === "full") {
+            overlayBody.innerHTML = `
+          <h4>Summary</h4>
+          <p>${project.summary}</p>
+          <h4>About</h4>
+          <p>${project.about}</p>
+          <h4>How it works</h4>
+          <p>${project.howItWorks}</p>
+        `;
+          }
+
           overlay.style.display = "block";
           document.body.style.overflow = "hidden"; // Prevent background scroll
         });
