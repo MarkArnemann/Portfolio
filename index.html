@@ -371,7 +371,6 @@
         <img id="aboutImage" src="" alt="portrait" />
         <h3 id="aboutTitle"></h3>
         <div id="aboutBody"></div>
-        <!-- NEW container for multiple sections -->
       </div>
     </div>
 
@@ -468,35 +467,32 @@
           h4.textContent = section.heading;
           aboutBody.appendChild(h4);
 
-          const p = document.createElement("p");
-          p.textContent = section.text;
-          aboutBody.appendChild(p);
+          // Only append a <p> if text exists
+          if (section.text) {
+            const p = document.createElement("p");
+            p.textContent = section.text;
+            aboutBody.appendChild(p);
+          }
 
-          // Render skill badges if present
+          // Skills section
           if (section.skills) {
             const skillsContainer = document.createElement("div");
-
             section.skills.forEach((skill) => {
               const badge = document.createElement("span");
               badge.className = "skill-badge";
-
-              // Use innerHTML so we can add dots markup
               badge.innerHTML = `
-                ${skill.name}
-                <span class="dots">
-                  ${[1, 2, 3]
-                    .map(
-                      (i) =>
-                        `<span class="dot ${
-                          i <= skill.rating ? "filled" : ""
-                        }"></span>`
-                    )
-                    .join("")}
-                </span>
-              `;
+        ${skill.name}
+        <span class="dots">
+          ${[1, 2, 3]
+            .map(
+              (i) =>
+                `<span class="dot ${i <= skill.rating ? "filled" : ""}"></span>`
+            )
+            .join("")}
+        </span>
+      `;
               skillsContainer.appendChild(badge);
             });
-
             aboutBody.appendChild(skillsContainer);
           }
         });
