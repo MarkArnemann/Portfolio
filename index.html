@@ -21,10 +21,14 @@
             /></a>
           </li>
           <li>
-            <a href="#"><img src="Assets/Icons/github.png" alt="GitHub" /></a>
+            <a href="https://github.com/MarkArnemann"
+              ><img src="Assets/Icons/github.png" alt="GitHub"
+            /></a>
           </li>
           <li>
-            <a href="#"><img src="Assets/Icons/Itchio.png" alt="Itch.io" /></a>
+            <a href="https://mrsmark.itch.io/"
+              ><img src="Assets/Icons/Itchio.png" alt="Itch.io"
+            /></a>
           </li>
         </ul>
       </div>
@@ -42,9 +46,9 @@
         <div class="IntroText">
           <h1>Hi, I'm Mark.</h1>
           <p>
-            Game programmer with a focus on systems and gameplay development,
-            dedicated to writing clean, efficient code and solving new
-            challenges in game creation.
+            Game programmer specializing in systems, tools, and gameplay
+            development. I’m passionate about solving complex problems,
+            exploring new techniques, and crafting engaging player experiences.
           </p>
           <button id="aboutMoreBtn" class="more-btn">About Me</button>
         </div>
@@ -410,7 +414,20 @@
         sections: [
           {
             heading: "Background",
-            text: "I'm a game programmer with a focus on systems and gameplay development. I love writing clean, efficient code and tackling new challenges in game creation.",
+            text: `
+            I’m a game programmer based in Hamburg-Germany, focused on building systems, tools, and gameplay logic.<br>
+            I’m currently pursuing my Master’s degree in Game Design, 
+            where I’ve worked on several diverse projects, including one large-scale game featured in my portfolio.<br><br>
+            
+            Previously, I spent two years at Neox Studios as a working student. I worked on a two commercial projects, coding core features, 
+            building tools that help the workflow, setting up game logic, collaborating closely with artists and designers to bring ideas to life.<br><br>
+
+            Curious by nature, I’m always eager to learn, but I also love applying what I know to create something new. Whether it’s perfecting a mechanic, 
+            making a puzzle click, or shaping a feature, I enjoy the whole process.<br><br>
+
+            For me, game development is a blend of problem solving, teamwork, and playful experimentation! Paired with a constant drive to explore new coding 
+            techniques, design ideas, and ways to grow my skills. That’s what keeps me excited to open my editor every day.<br><br>
+            `,
           },
           {
             heading: "Technical Experience",
@@ -430,16 +447,26 @@
               { name: "Cinemachine (Unity)", rating: 3 },
               { name: "Photon PUN2 (Unity)", rating: 2 },
               { name: "Photon Fusion2 (Unity)", rating: 2 },
-              { name: "Netcode for Gameobjects (Unity)", rating: 1 },
-              { name: "Fishnet (Unity)", rating: 1 },
+              { name: "SourceTree (Git)", rating: 2 },
               { name: "Wwise (Unity)", rating: 2 },
               { name: "Fmod (Unity)", rating: 1 },
-              { name: "SourceTree (Git)", rating: 2 },
+              { name: "Netcode for Gameobjects (Unity)", rating: 1 },
+              { name: "Fishnet (Unity)", rating: 1 },
             ],
           },
           {
-            heading: "Hobbies",
-            text: "When I'm not coding, I enjoy experimenting with shaders, designing mechanics, and exploring indie games.",
+            heading: "When I’m not making games",
+            text: `
+            Outside of game development, I like to read sci-fi books and non-fiction books.<br>
+            I regularly play games with friends, no matter if it's on the PC or in the Kitchen! I also play Lorcana (TCG).<br><br>
+
+            When I'm not reading or gaming, I'm probably out swimming, in the gym, or heading out for a walk with friends and a coffee.<br><br>
+
+            I also do enjoy cooking, which doesn't mean that im good at it, same for making music!<br>
+            But it's a lot of fun - probably not to listen to it :D<br><br>
+
+            I also propably saw every "In A Nutshell" video on youtube, I'm a huge space nerd!
+            `,
           },
         ],
       };
@@ -467,32 +494,35 @@
           h4.textContent = section.heading;
           aboutBody.appendChild(h4);
 
-          // Only append a <p> if text exists
           if (section.text) {
             const p = document.createElement("p");
-            p.textContent = section.text;
+            p.innerHTML = section.text; // <-- allows <br> to work
             aboutBody.appendChild(p);
           }
 
-          // Skills section
+          // Render skill badges if present
           if (section.skills) {
             const skillsContainer = document.createElement("div");
+
             section.skills.forEach((skill) => {
               const badge = document.createElement("span");
               badge.className = "skill-badge";
               badge.innerHTML = `
-        ${skill.name}
-        <span class="dots">
-          ${[1, 2, 3]
-            .map(
-              (i) =>
-                `<span class="dot ${i <= skill.rating ? "filled" : ""}"></span>`
-            )
-            .join("")}
-        </span>
-      `;
+                  ${skill.name}
+                  <span class="dots">
+                    ${[1, 2, 3]
+                      .map(
+                        (i) =>
+                          `<span class="dot ${
+                            i <= skill.rating ? "filled" : ""
+                          }"></span>`
+                      )
+                      .join("")}
+                  </span>
+                `;
               skillsContainer.appendChild(badge);
             });
+
             aboutBody.appendChild(skillsContainer);
           }
         });
@@ -555,28 +585,39 @@
             <strong>Available</strong>: Steam<br>`,
           whatIDid: `I joined this project in an early stage and got to give some feedback and ideas for the game design. Besides of my usual programming work, I worked on the case creation, 
           what hints do the players get, at what time. Figuring out what the player needs to know at what point of the case.<br> 
-I also programmed several systems, wich were focused to be generic for the usage in multiple cases. Including things players can interact with as well as riddles or puzzles.<br> 
-I worked on a saving system, integrated basic NPCs with simple behaviours. And of course, I also helped to implement my camera system for dialogues (See: Camera System in other Projects)!
+          I also programmed several systems, wich were focused to be generic for the usage in multiple cases. Including things players can interact with as well as riddles or puzzles.<br> 
+          I worked on a saving system, integrated basic NPCs with simple behaviours. And of course, I also helped to implement my camera system for dialogues (See: Camera System in other Projects)!
             `,
           type: "neox",
         },
-
         // --- New style projects ---
         {
           title: "Punchy Pirates",
           img: "Assets/Images/punchypirates.gif",
-          summary: `A chaotic Rouge-Like multiplayer game. Defend your gold from greedy goblins and keep your ship afloat, to collect all map pieces for the forgotton treasure!`,
-          about: `As a study project, we developed this <b>vwertical slice</b> for our Game-design Master. Players defend their gold from goblins and have to fix their ship, 
-            whenever sharks bite a hole into it. We drove a <b>non-lethal & kids-firendly</b> policy with this project. We aimed for a game that can be played with the hole
+          summary: `A chaotic Rouge-Like multiplayer game. Defend your gold from greedy goblins and keep your ship afloat, to collect all map pieces for the forgotton treasure!<br>
+                    Take a look at our <a href="https://www.youtube.com/watch?v=vHfFEnxJZSk">Trailer<a>`,
+
+          about: `As a study project, we developed this vertical slice for our Game-design Master. Players defend their gold from goblins and have to fix their ship, 
+            whenever sharks bite a hole into it. We drove a non-lethal & kids-firendly policy with this project. We aimed for a game that can be played with the hole
             family, even when the players have non to very little gaming expirience. We achived this by keeping inputs simple and giving players a lot of hints on what to do.<br>
             We were able to prove our philosophy at the <b>Baltic Games Fest</b>, having a lot of people play our game!<br><br>
             
-            <img src="Assets/Images/Baltic.jpg" 
+            <img src="Assets/Images/PunchyPirates/Baltic.jpg" 
             alt="Baltic Games Fest" 
             style="width:100%; border-radius:8px; margin:10px 0;">
             `,
-          howItWorks: `Connect up to four input devices, and start a match! Select a rout on the map table, and start the round by kicking the Steering wheel! the difficulty of the round 
-            depends on the length of the chosen rout. We define difficulty by ...........`,
+
+          howItWorks: `Connect up to four input devices, and start a match! Select a rout on the map table, and start the round by kicking the Steering wheel!
+          We define difficulty by the length of the selected rout, to encourage decision making on our open map.<br><br>
+          To select a rout, player have to kick the map tabel and 
+          figure out, which Island they want to visit. They have to decide between 4 diffrent reward types, more gold for their treasure, repait or upgrade their ship. 
+          For all players that want to gamble a little, we added a question mark, hiding the true treasure on that island (which is gold, repair or upgrade).<br><br>
+
+          Players have to keep in mind that they shouldn't spend all of their money on upgrades and repair, to be wealthy enough to purchase the map piece at the end of the run!<br><br>
+          When players started a round by kicking the steering, the ship starts to set sail and enemies appear, one tries to steal the players gold and get it off board, the other wants to eat holes into the ship
+          to let it sink and the last one only has eyes for the players, trying to knock them off board. <br><br>
+          
+          We developed this vertical slice in Unity, using middleware like Fusion2 and FMod. Together with two external audio students we formed a team of 2 artists, 3 Programmers and 2 Audio Designers.`,
           type: "full",
         },
         {
@@ -637,9 +678,10 @@ I worked on a saving system, integrated basic NPCs with simple behaviours. And o
         {
           title: "Water Shader",
           img: "Assets/Images/watershader.gif",
-          summary: "Custom shader to create realistic water effects.",
-          about:
-            "Written in Unity Shader Graph with foam, depth-based coloring, and wave animations.",
+          summary:
+            "Custom shader to create realistic water effects using Unity's shader graph with custom hsls functions.",
+          about: `A Water shader capable of simulating waves, water depth as well as underwater distortion, underwater fog, intersecting foam and distorted surface foam. 
+            This shader was an assignment project for my Master’s.`,
           howItWorks:
             "Shader blends multiple noise layers for surface waves and applies depth-based transparency for realism.",
           type: "full",
@@ -647,11 +689,10 @@ I worked on a saving system, integrated basic NPCs with simple behaviours. And o
         {
           title: "Personal Library",
           img: "Assets/Images/library.png",
-          summary: "Personal asset library for quick game development.",
-          about:
-            "Contains scripts, shaders, and prefabs used across multiple projects.",
-          howItWorks:
-            "Import into Unity, drag and drop components, customize parameters to fit each project.",
+          summary: "Personal code library extending Unitys code base.",
+          about: `Contains multiple Unity class extensions. Custom Attributes for C#, extension functions, sript templates, as well as handy abstract and Helper classes. 
+            Like a safe-system, genericly build to encoud and decode data into a JSON file.`,
+          howItWorks: `Feel free to download the library <a href="https://gitlab.com/Mr.Mark/moa_library">here<a>!`,
           type: "full",
         },
         {
