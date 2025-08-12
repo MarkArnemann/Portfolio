@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #f5bc11;
+  --secondary-color: #3a3d47d7;
+  --text-color: #ddd;
+  --background-color: #2c2e36;
+  --Headbackground-color: #3a3d47;
+  --OverlayBackground-color: #3a3d47d7;
+  --ProjectsBackground-color: #3a3d47;
+  --skillBadge-color: #ffffff;
+  --Footer-color: #2c2e36;
+}
+
 @font-face {
   font-family: "League_Spartan-Regular";
   src: url("Assets/Fonts/League_Spartan/static/LeagueSpartan-Regular.ttf")
@@ -26,8 +38,8 @@ header {
   z-index: 1000;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* simpler layout */
-  background-color: #2c2e36;
+  grid-template-columns: repeat(5, 1fr); /* simpler layout */
+  background-color: var(--Headbackground-color);
   align-items: center;
   padding: 10px;
 }
@@ -38,10 +50,9 @@ header {
   flex-direction: column;
 }
 
-/* HeadLogo in column 2 */
 .HeadLogo {
-  grid-column: 2;
   display: flex;
+  grid-column: 2/4;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -49,19 +60,21 @@ header {
 .HeadLogo h3 {
   font-family: "League_Spartan-Bold";
   font-size: 42px;
-  color: #f5bc11;
-  margin-bottom: -15px;
+  color: var(--primary-color);
+  margin-bottom: -25px;
+  margin-top: 0px;
 }
 
 .HeadLogo p {
   font-family: "League_Spartan-Regular";
   font-size: 24px;
-  color: #f5bc11;
+  color: var(--primary-color);
+  margin-bottom: 0px;
 }
 
 /* HeadReferences in column 3 */
 .HeadReferences {
-  grid-column: 3;
+  grid-column: 4;
   display: flex;
   justify-content: flex-end;
 }
@@ -105,18 +118,21 @@ header {
 /* HERO SECTION */
 .HeroSection {
   height: 80vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(min(30px, 100%), 1fr));
   justify-content: center;
   align-items: center;
 }
 
 .IntroCard {
   display: flex;
+  grid-column: 2 / 5; /* <-- Corrected here */
   flex-direction: row;
   align-items: center;
-  gap: 80px; /* spacing between image and text */
-  padding: 20px;
+  gap: 80px;
+  /* padding: 20px; */
   max-width: 1200px;
+  margin: 0 auto; /* optional: center horizontally */
 }
 
 .Portrait img {
@@ -124,14 +140,14 @@ header {
   height: 300px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #434c75;
+  border: 4px solid var(--secondary-color);
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
 }
 
 .more-btn {
   background-color: transparent;
-  color: #f5bc11;
-  border: 2px solid #f5bc11;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
   padding: 6px 14px;
   font-family: "League_Spartan-Bold";
   font-size: 14px;
@@ -141,22 +157,41 @@ header {
 }
 
 .more-btn:hover {
-  background-color: #f5bc11;
+  background-color: var(--primary-color);
   color: #2c2e36;
 }
 
 .skill-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: transparent;
-  color: #f5bc11;
-  border: 2px solid #f5bc11;
-  padding: 4px 10px;
+  border: 2px solid var(--skillBadge-color);
+  padding: 4px 8px;
   font-size: 14px;
   font-family: "League_Spartan-Bold";
   border-radius: 6px;
   margin: 4px;
   cursor: default;
   transition: all 0.2s ease;
+}
+
+.dots {
+  display: flex;
+  gap: 2px;
+  margin-left: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+}
+
+.dot.filled {
+  background-color: var(--primary-color);
 }
 
 /* Intro text styles */
@@ -169,27 +204,27 @@ header {
 .IntroText h1 {
   font-family: "League_Spartan-Bold";
   font-size: 48px;
-  color: #f5bc11;
+  color: var(--primary-color);
   margin-bottom: 16px;
 }
 
 .IntroText p {
   font-family: "League_Spartan-Regular";
   font-size: 20px;
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 /* PROJECTS SECTION */
 .ProjectsSection {
   padding: 80px 40px;
   text-align: center;
-  background-color: #1f2026;
+  background-color: var(--ProjectsBackground-color);
 }
 
 .ProjectsSection h2 {
   font-family: "League_Spartan-Bold";
   font-size: 36px;
-  color: #f5bc11;
+  color: var(--primary-color);
   margin-bottom: 40px;
 }
 
@@ -204,7 +239,7 @@ header {
 }
 
 .ProjectCard {
-  background-color: #2c2e36;
+  background-color: var(--background-color);
   padding: 16px;
   line-height: 1.2;
   border-radius: 12px;
@@ -227,14 +262,14 @@ header {
 .ProjectCard h3 {
   font-family: "League_Spartan-Bold";
   font-size: 24px;
-  color: #f5bc11;
+  color: var(--primary-color);
   margin-bottom: -5px;
 }
 
 .ProjectCard h4 {
   font-family: "League_Spartan-Bold";
   font-size: 14px;
-  color: #ddd;
+  color: var(--text-color);
   margin-top: 2px;
   margin-bottom: -5px;
 }
@@ -242,7 +277,7 @@ header {
 /* Remove the old paragraph style, or keep if you still use it */
 .ProjectCard p {
   font-family: "League_Spartan-Regular";
-  color: #ddd;
+  color: var(--text-color);
   margin-top: 12px;
   font-size: 16px;
 }
@@ -253,12 +288,12 @@ header {
   padding: 0;
   margin: 12px 0 0 0;
   font-family: "League_Spartan-Regular";
-  color: #ddd;
+  color: var(--text-color);
   font-size: 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  
+
   align-items: center; /* horizontal center */
   text-align: center; /* center text */
 }
@@ -274,13 +309,13 @@ header {
   width: 20px;
   font-size: 18px;
   line-height: 1;
-  color: #f5bc11;
+  color: var(--primary-color);
   flex-shrink: 0;
 }
 
 /* Skills text next to icon (no badge) */
 .skills-text {
-  color: #ddd;
+  color: var(--text-color);
   font-weight: 500;
   white-space: normal;
 }
@@ -294,7 +329,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: var(--OverlayBackground-color);
   overflow-y: auto; /* Scrollable content */
 }
 
@@ -303,7 +338,7 @@ header {
   position: relative;
   margin: 5% auto;
   padding: 20px;
-  background: #fff;
+  background: var(--text-color);
   max-width: 700px;
   border-radius: 10px;
   text-align: left;
@@ -312,7 +347,7 @@ header {
 .overlay-content h4 {
   font-family: "League_Spartan-Bold";
   font-size: 20px;
-  color: #f5bc11;
+  color: var(--primary-color);
   margin-top: 20px;
   margin-bottom: 8px;
   text-align: left;
@@ -342,7 +377,7 @@ header {
 #aboutBody h4 {
   font-family: "League_Spartan-Bold";
   font-size: 20px;
-  color: #f5bc11;
+  color: var(--primary-color);
   margin-top: 20px;
 }
 
@@ -355,13 +390,13 @@ header {
 
 /* Overlay Content Box */
 .overlay-content {
-  background-color: #2c2e36;
+  background-color: var(--background-color);
   margin: 60px auto;
   padding: 20px;
   border-radius: 12px;
   max-width: 800px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  color: #ddd;
+  color: var(--text-color);
 }
 
 .overlay-content img {
@@ -373,7 +408,7 @@ header {
 .overlay-content h3 {
   font-family: "League_Spartan-Bold";
   font-size: 28px;
-  color: #f5bc11;
+  color: var(--primary-color);
   margin-bottom: 10px;
   text-align: center;
 }
@@ -385,23 +420,46 @@ header {
 }
 
 /* Close Button */
-.overlay-close {
+
+.overlayAbout-close {
   font-size: 32px;
-  color: #fff;
+  color: var(--text-color);
   float: right;
   cursor: pointer;
   transition: color 0.2s;
 }
-.overlay-close:hover {
-  color: #f5bc11;
+.overlayAbout-close:hover {
+  color: var(--primary-color);
+}
+
+.overlayWork-close {
+  font-size: 32px;
+  color: var(--text-color);
+  float: right;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.overlayWork-close:hover {
+  color: var(--primary-color);
+}
+
+.overlayProject-close {
+  font-size: 32px;
+  color: var(--text-color);
+  float: right;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.overlayProject-close:hover {
+  color: var(--primary-color);
 }
 
 /* FOOTER */
 .Footer {
-  background-color: #2c2e36;
+  background-color: var(--Footer-color);
   padding: 40px 20px;
   text-align: center;
-  color: #bbb;
+  color: var(--text-color);
   font-family: "League_Spartan-Regular";
   font-size: 16px;
 }
@@ -434,19 +492,20 @@ header {
 
   .HeadLogo h3 {
     font-family: "League_Spartan-Bold";
-    font-size: 32px;
-    color: #f5bc11;
+    font-size: 24px;
+    color: var(--primary-color);
     margin-top: 0px;
+    margin-bottom: -15px;
   }
   .HeadLogo p {
     font-family: "League_Spartan-Bold";
     font-size: 14px;
-    color: #f5bc11;
+    color: var(--primary-color);
     margin-bottom: -25px;
   }
 
   .HeadReferences {
-    grid-column: 4;
+    grid-column: 5;
     display: flex;
     justify-content: flex-end;
   }

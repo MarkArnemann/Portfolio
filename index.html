@@ -46,7 +46,7 @@
             dedicated to writing clean, efficient code and solving new
             challenges in game creation.
           </p>
-          <button id="aboutMoreBtn" class="more-btn">More...</button>
+          <button id="aboutMoreBtn" class="more-btn">About Me</button>
         </div>
       </div>
     </div>
@@ -367,8 +367,8 @@
     <!-- Overlay Info -->
     <div id="aboutOverlay" class="overlay">
       <div class="overlay-content">
-        <span class="overlay-close">&times;</span>
-        <img id="aboutImage" src="" alt="Mark's portrait" />
+        <span class="overlayAbout-close">&times;</span>
+        <img id="aboutImage" src="" alt="portrait" />
         <h3 id="aboutTitle"></h3>
         <div id="aboutBody"></div>
         <!-- NEW container for multiple sections -->
@@ -378,7 +378,7 @@
     <!-- Overlay Neox Projects -->
     <div id="projectOverlay" class="overlay">
       <div class="overlay-content">
-        <span class="overlay-close">&times;</span>
+        <span class="overlayWork-close">&times;</span>
         <img id="overlayImage" src="" alt="" />
         <h3 id="overlayTitle"></h3>
         <div id="overlayBody"></div>
@@ -388,7 +388,7 @@
     <!-- Overlay Projects -->
     <div id="projectOverlay" class="overlay">
       <div class="overlay-content">
-        <span class="overlay-close">&times;</span>
+        <span class=".overlayProject-close">&times;</span>
         <img id="overlayImage" src="" alt="" />
         <h3 id="overlayTitle"></h3>
 
@@ -414,17 +414,28 @@
             text: "I'm a game programmer with a focus on systems and gameplay development. I love writing clean, efficient code and tackling new challenges in game creation.",
           },
           {
-            heading: "Skills",
-            text: "Here’s a quick look at my core skills:",
+            heading: "Technical Experience",
             skills: [
-              "C#",
-              "Unity",
-              "Shader Graph",
-              "HLSL",
-              "Git",
-              "Gameplay Systems",
-              "AI Programming",
-              "Optimization",
+              { name: "C#", rating: 3 },
+              { name: "Unity", rating: 3 },
+              { name: "Git", rating: 3 },
+              { name: "Java", rating: 2 },
+              { name: "HLSL", rating: 1 },
+              { name: "C++", rating: 1 },
+              { name: "C", rating: 1 },
+            ],
+          },
+          {
+            heading: "Tools & Middleware",
+            skills: [
+              { name: "Cinemachine (Unity)", rating: 3 },
+              { name: "Photon PUN2 (Unity)", rating: 2 },
+              { name: "Photon Fusion2 (Unity)", rating: 2 },
+              { name: "Netcode for Gameobjects (Unity)", rating: 1 },
+              { name: "Fishnet (Unity)", rating: 1 },
+              { name: "Wwise (Unity)", rating: 2 },
+              { name: "Fmod (Unity)", rating: 1 },
+              { name: "SourceTree (Git)", rating: 2 },
             ],
           },
           {
@@ -439,61 +450,53 @@
       const aboutImage = document.getElementById("aboutImage");
       const aboutTitle = document.getElementById("aboutTitle");
       const aboutBody = document.getElementById("aboutBody");
-      const aboutClose = aboutOverlay.querySelector(".overlay-close");
+      const aboutClose = aboutOverlay.querySelector(".overlayAbout-close");
 
       const card = document.getElementById("aboutMoreBtn");
 
-      // Function to open overlay (UPDATED with skill badges)
+      // Function to open overlay (fixed loop + skills)
       function openAboutOverlay() {
         aboutImage.src = aboutData.img;
         aboutTitle.textContent = aboutData.title;
 
+        // Clear old content
         aboutBody.innerHTML = "";
 
+        // Loop through each section
         aboutData.sections.forEach((section) => {
           const h4 = document.createElement("h4");
           h4.textContent = section.heading;
           aboutBody.appendChild(h4);
 
-          const infoList = document.createElement("ul");
-          infoList.className = "project-info-list";
-
-          // Team size
-          const teamItem = document.createElement("li");
-          teamItem.innerHTML = `<span class="icon team-icon"></span> Team: ${
-            project.teamSize || "N/A"
-          }`;
-          infoList.appendChild(teamItem);
-
-          // Time worked
-          const timeItem = document.createElement("li");
-          timeItem.innerHTML = `<span class="icon time-icon"></span> Time: ${
-            project.timeWorked || "N/A"
-          }`;
-          infoList.appendChild(timeItem);
-
-          // Skills used
-          const skillsItem = document.createElement("li");
-          skillsItem.innerHTML = `<span class="icon skills-icon"></span> Skills:`;
-          project.skills.forEach((skill) => {
-            const badge = document.createElement("span");
-            badge.className = "skill-badge";
-            badge.textContent = skill;
-            skillsItem.appendChild(badge);
-          });
-          infoList.appendChild(skillsItem);
-
-          card.appendChild(infoList);
+          const p = document.createElement("p");
+          p.textContent = section.text;
+          aboutBody.appendChild(p);
 
           // Render skill badges if present
           if (section.skills) {
             const skillsContainer = document.createElement("div");
+
             section.skills.forEach((skill) => {
               const badge = document.createElement("span");
               badge.className = "skill-badge";
-              badge.textContent = skill;
+
+              // Use innerHTML so we can add dots markup
+              badge.innerHTML = `
+                ${skill.name}
+                <span class="dots">
+                  ${[1, 2, 3]
+                    .map(
+                      (i) =>
+                        `<span class="dot ${
+                          i <= skill.rating ? "filled" : ""
+                        }"></span>`
+                    )
+                    .join("")}
+                </span>
+              `;
               skillsContainer.appendChild(badge);
             });
+
             aboutBody.appendChild(skillsContainer);
           }
         });
@@ -524,7 +527,8 @@
       const overlayImage = document.getElementById("overlayImage");
       const overlayTitle = document.getElementById("overlayTitle");
       const overlayBody = document.getElementById("overlayBody"); // new flexible content container
-      const closeBtn = document.querySelector(".overlay-close");
+      const closePBtn = document.querySelector(".overlayProject-close");
+      const closeWBtn = document.querySelector(".overlayWork-close");
 
       const projects = [
         // --- Neox style ---
@@ -720,10 +724,17 @@ I worked on a saving system, integrated basic NPCs with simple behaviours. And o
       });
 
       // Close overlay
-      closeBtn.addEventListener("click", () => {
-        overlay.style.display = "none";
-        document.body.style.overflow = "auto";
-      });
+      if (closePBtn) {
+        closePBtn.addEventListener("click", () => {
+          overlay.style.display = "none";
+          document.body.style.overflow = "auto";
+        });
+      } else if (closeWBtn) {
+        closeWBtn.addEventListener("click", () => {
+          overlay.style.display = "none";
+          document.body.style.overflow = "auto";
+        });
+      }
 
       // Close when clicking outside content
       overlay.addEventListener("click", (e) => {
