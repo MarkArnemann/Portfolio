@@ -419,7 +419,7 @@
             I’m currently pursuing my Master’s degree in Game Design, 
             where I’ve worked on several diverse projects, including one large-scale game featured in my portfolio.<br><br>
             
-            Previously, I spent two years at Neox Studios as a working student. I worked on a two commercial projects, coding core features, 
+            Previously, I spent two years at Neox Studios as a working student. I worked on two commercial projects, coding core features, 
             building tools that help the workflow, setting up game logic, collaborating closely with artists and designers to bring ideas to life.<br><br>
 
             Curious by nature, I’m always eager to learn, but I also love applying what I know to create something new. Whether it’s perfecting a mechanic, 
@@ -682,8 +682,33 @@
             "Custom shader to create realistic water effects using Unity's shader graph with custom hsls functions.",
           about: `A Water shader capable of simulating waves, water depth as well as underwater distortion, underwater fog, intersecting foam and distorted surface foam. 
             This shader was an assignment project for my Master’s.`,
-          howItWorks:
-            "Shader blends multiple noise layers for surface waves and applies depth-based transparency for realism.",
+          howItWorks: `Starting with the water depth, the shader checks the distance of an object to the water plane in world space. This returns the value, 
+            how deep under the water an object is, regardless of the camera position. This value allows to lerp a shallow and a deep water color, for a nice gradient effect.<br>
+                    
+            <img src="Assets/Images/WaterShader/Shader01.png" 
+                        alt="Baltic Games Fest" 
+                        style="width:100%; border-radius:8px; margin:10px 0;">
+            <br><br>
+            For the underwater distortion the shader uses the same depth check, to figure out if an object is below or above the surface.<br>
+            It uses UV maps, with a simple noise texture which is moving to create the distortion effect.<br><br>
+                    
+            Next is adding surface foam, this is a simple texture displayed on the face of the plane.<br>
+            I added a distortion function in hsls for the foam, to simulate it interacting with the waves.<br>
+            As well as intersection foam. The intersection foam uses a little trick, the shader takes a small depth check of the object like in the depth check described above,
+            this time it checks in camera direction. The shader has another noise texture displayed on the face, but cutoff by the depth value of the object. Allowing a fade for the 
+            intersection foam.<br> 
+                    
+            <img src="Assets/Images/WaterShader/Shader04.png" 
+                        alt="Baltic Games Fest" 
+                        style="width:100%; border-radius:8px; margin:10px 0;">
+            <br><br>
+            The last thing I added for the assignment where waves. I added a hsls function to move vertices with Gerstner wave. These move vertices in e circular loop, which leads to a nice roll effect of the wave.<br><br>
+                    
+            For the game Punchy Pirates, I added some additional feature, like wave height fade. Allowing the top of the wave to have a lighter color then the lower parts, these differences can be set by a cutoff value and a fade value. The surface foam also reacts to the height fade with its transparency. Leading to the final result of the water shader.
+                    
+            <img src="Assets/Images/WaterShader/WaterShader.gif" 
+                        alt="Baltic Games Fest" 
+                        style="width:100%; border-radius:8px; margin:10px 0;"> `,
           type: "full",
         },
         {
