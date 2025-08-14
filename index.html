@@ -21,8 +21,8 @@
             /></a>
           </li>
           <li>
-            <a href="https://github.com/MarkArnemann"
-              ><img src="Assets/Icons/github.png" alt="GitHub"
+            <a href="https://gitlab.com/Mr.Mark"
+              ><img src="Assets/Icons/Gitlab.png" alt="GitHub"
             /></a>
           </li>
           <li>
@@ -33,7 +33,6 @@
         </ul>
       </div>
     </header>
-    <!-- HEADER END! -->
 
     <div class="HeroSection">
       <div class="IntroCard">
@@ -365,6 +364,25 @@
       <p>
         Thanks for visiting! I’m open for opportunities and collaborations. ☕
       </p>
+      <div class="FootReferences">
+        <ul>
+          <li>
+            <a href="https://www.linkedin.com/in/mark-arnemann-7011a9299/"
+              ><img src="Assets/Icons/linkedin.png" alt="LinkedIn"
+            /></a>
+          </li>
+          <li>
+            <a href="https://gitlab.com/Mr.Mark"
+              ><img src="Assets/Icons/Gitlab.png" alt="GitHub"
+            /></a>
+          </li>
+          <li>
+            <a href="https://mrsmark.itch.io/"
+              ><img src="Assets/Icons/Itchio.png" alt="Itch.io"
+            /></a>
+          </li>
+        </ul>
+      </div>
       <p>mark.arnemann@hotmail.de</p>
     </footer>
 
@@ -426,7 +444,7 @@
             making a puzzle click, or shaping a feature, I enjoy the whole process.<br><br>
 
             For me, game development is a blend of problem solving, teamwork, and playful experimentation! Paired with a constant drive to explore new coding 
-            techniques, design ideas, and ways to grow my skills. That’s what keeps me excited to open my editor every day.<br><br>
+            techniques, design ideas, and ways to grow my skills. That’s what keeps me excited to open my editor every day.
             `,
           },
           {
@@ -595,7 +613,7 @@
           title: "Punchy Pirates",
           img: "Assets/Images/punchypirates.gif",
           summary: `A chaotic Rouge-Like multiplayer game. Defend your gold from greedy goblins and keep your ship afloat, to collect all map pieces for the forgotton treasure!<br>
-                    Take a look at our <a href="https://www.youtube.com/watch?v=vHfFEnxJZSk">Trailer<a>`,
+                    Take a look at our <a href="https://www.youtube.com/watch?v=vHfFEnxJZSk">Trailer</a>`,
 
           about: `As a study project, we developed this vertical slice for our Game-design Master. Players defend their gold from goblins and have to fix their ship, 
             whenever sharks bite a hole into it. We drove a non-lethal & kids-firendly policy with this project. We aimed for a game that can be played with the hole
@@ -679,7 +697,8 @@
           title: "Water Shader",
           img: "Assets/Images/watershader.gif",
           summary:
-            "Custom shader to create realistic water effects using Unity's shader graph with custom hsls functions.",
+            `Custom shader to create realistic water effects using Unity's shader graph with custom hsls functions.<br>
+             Fell free to take a look at <a href="https://gitlab.com/Mr.Mark/watershader">the shader</a>.`,
           about: `A Water shader capable of simulating waves, water depth as well as underwater distortion, underwater fog, intersecting foam and distorted surface foam. 
             This shader was an assignment project for my Master’s.`,
           howItWorks: `Starting with the water depth, the shader checks the distance of an object to the water plane in world space. This returns the value, 
@@ -717,37 +736,68 @@
           summary: "Personal code library extending Unitys code base.",
           about: `Contains multiple Unity class extensions. Custom Attributes for C#, extension functions, sript templates, as well as handy abstract and Helper classes. 
             Like a safe-system, genericly build to encoud and decode data into a JSON file.`,
-          howItWorks: `Feel free to download the library <a href="https://gitlab.com/Mr.Mark/moa_library">here<a>!`,
+          howItWorks: `Feel free to download the library <a href="https://gitlab.com/Mr.Mark/moa_library">here.</a>`,
           type: "full",
         },
         {
           title: "The Morse Game",
           img: "Assets/Images/morsegame.jpg",
-          summary: "Educational game to learn Morse code.",
-          about:
-            "Players translate text into Morse and vice versa, progressing through difficulty levels.",
-          howItWorks:
-            "Game plays audio beeps and visual signals, and players input their translation.",
+          summary: `A one button game where the player needs to send morse codes. A display shows the current code, later the dot and dashes start to disappear or negate.`,
+          about: `This game was created as part of my Masters study program.<br>
+          The challenge was to create a one button game, the rest was up to us. 
+          We got the chance to exhibited this game at a play-party in our Games-Lab.<br> 
+          You can play our game on <a href="https://deemodev.itch.io/the-morse-game">itch.io!</a>`,
+          howItWorks: `
+          Start a game, carefully read all the instructions and start morsing. Players have a limited time window, in which they have to send the morse message.<br>
+          Starting a little slower and increasing during the duration of the game.<br>
+          When the first couple messages are send, dots and dashes start to negate. Instead of an displayed dash, players have to input a dot.<br> 
+          Again a couple messages are send with this new mechanic. Just when the player feels comfortable with it, some dots and dashes start to disappear.<br>
+          Players have to remember the input quick enough, but was the invisible dot negated or was it a dash anyway?  
+          `,
           type: "full",
         },
         {
           title: "Aurora Initiative",
           img: "Assets/Images/Aurora.gif",
-          summary: "Sci-fi strategy game concept with AI-driven events.",
-          about:
-            "Focuses on diplomacy, exploration, and managing interstellar factions.",
-          howItWorks:
-            "Players respond to procedurally generated events while balancing resources and alliances.",
+          summary: `Terraform a little planet to fit your needs, while living on it. This third person adventure is about terraforming and exploring.<br> 
+                  Disclaimer: This project is work in progress!`,
+          about: `This is a private project I started and build a concept for. I left the idea of creating a small game out of it behind, and used the project to learn about mesh generation and play around with some features I got interested in.<br><br>
+                  The planet generation code I is not mine! I used <a href="https://github.com/bart1259/UnityHexPlanet">this repo</a>. I implemented the generation code and learned some things about mesh generation.<br> 
+                  With this I created a mesh generation code for the map in <b>PunchyPirates</b>.`,
+          howItWorks: `
+          In the generation code, I changed the way the generated tiles are stored, and how they safe references to their chunks and adjacent tiles.<br>
+            This allowed me to manipulate the tiles, to build in game tools for the player as raising and lowering a single or multiple tiles, as well as flattening the adjacent tiles to match the height of the center tile.<br>
+            I also added prop generation and environment generation for the planet. The player can use a camera tool I implemented, to scan different materials. When ever they are known, the camera displays the material name, once the camera is aimed on them.<br><br>
+                    
+                    
+            <img src="Assets/Images/Aurora/PropGeneration.png" 
+            alt="Camera setup in Unity" 
+            style="width:100%; border-radius:8px; margin:10px 0;"><br>
+          `,
           type: "full",
         },
         {
           title: "Trash Game",
-          img: "Assets/Images/TrashGameGameplay.png",
-          summary: "Fun waste-sorting mini-game.",
-          about:
-            "Players sort trash into the correct bins under time pressure.",
-          howItWorks:
-            "Drag items into the right bin. The game speeds up over time to increase difficulty.",
+          img: "Assets/Images/TrashGame.png",
+          summary: `Hidden sensors in a real room send a signal, that triggers in-game trash to spawn. From time to time, some one needs to do the job and sort the three different trash types, in their belonging bin. `,
+          about: `This project is part of my Master study program. We had the guideline to make any game, but with unusual inputs.<br> 
+          We used a default Oculus-VR headset, for the actual gameplay of sorting the trash in the different bins. 
+          For trash to spawn, we used different sensors, connected to an arduino that sends the signal via WiFi to the pc the game runs on, where in-game trash spawns. `,
+          howItWorks: `The sensors are sending an input, which is received on the pc, our game runs on. The pc reads the input as spacebar. We then added the spacebar input in Unity, to spawn trash.<br><br> 
+                <img src="Assets/Images/TrashGame/Sensors.png" 
+                            alt="Camera setup in Unity" 
+                            style="width:100%; border-radius:8px; margin:10px 0;"><br>
+
+                The green, purple and blue trash types need to be sorted in their same colored bin. to do so, a players has to enter the game in VR, aim the controller in the direction of the trash and hold the grab button, to collect it.<br> The game uses physics, which make the throwing part interesting. 
+                When ever the trash in the game is to much, the Trash-o-meter starts its sirens, signaling that someone has to take action and sort the trash.<br><br>
+
+                <img src="Assets/Images/TrashGame/Lab_Full.png" 
+                            alt="Camera setup in Unity" 
+                            style="width:100%; border-radius:8px; margin:10px 0;"><br>
+
+                <img src="Assets/Images/TrashGame/TrashGameplay.gif" 
+                            alt="Camera setup in Unity" 
+                            style="width:100%; border-radius:8px; margin:10px 0;"><br>`,
           type: "full",
         },
       ];

@@ -1,5 +1,6 @@
 :root {
   --primary-color: #f5bc11;
+  --highlight-color: #f3bf23;
   --secondary-color: #3a3d47d7;
   --text-color: #ddd;
   --background-color: #2c2e36;
@@ -280,6 +281,36 @@ header {
   font-size: 16px;
 }
 
+.overlay-content a[href^="http"]:after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  filter: invert(85%) sepia(88%) saturate(1000%) hue-rotate(0) brightness(450%)
+    contrast(100%);
+  background-image: url("Assets/Icons/Link-Icon_48.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.overlay-content a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+.overlay-content a:hover {
+  color: var(--highlight-color);
+  text-decoration: underline;
+}
+
+.external-icon {
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
 .project-info-list {
   list-style: none;
   padding: 0;
@@ -375,14 +406,13 @@ header {
   font-family: "League_Spartan-Bold";
   font-size: 20px;
   color: var(--primary-color);
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 #aboutBody p {
   font-family: "League_Spartan-Regular";
   font-size: 16px;
   line-height: 1.5;
-  margin-bottom: 10px;
 }
 
 /* Overlay Content Box */
@@ -458,6 +488,34 @@ header {
   color: var(--text-color);
   font-family: "League_Spartan-Regular";
   font-size: 16px;
+}
+
+.FootReferences {
+  grid-column: 4;
+  display: flex;
+  justify-content: center;
+  transform: scale(0.5);
+  margin-top: -45px;
+  margin-bottom: -45px;
+}
+
+.FootReferences ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.FootReferences li {
+  display: flex;
+  align-items: center;
+  transform: scale(0.6);
+}
+
+.FootReferences li:hover {
+  display: flex;
+  align-items: center;
+  transform: scale(0.7);
 }
 
 @media (max-width: 1042px) {
