@@ -223,7 +223,7 @@
                 alt="Team icon"
                 class="icon"
               />
-              <b>Tools</b>: Unity, Shader-Graph, hsls, C#
+              <b>Tools</b>: Unity, Shader-Graph, hlsl, C#
             </li>
           </ul>
         </div>
@@ -431,6 +431,18 @@
         img: "Assets/Images/DetailsProfile.jpg",
         sections: [
           {
+            heading: "Technical Experience",
+            skills: [
+              { name: "C#", rating: 3 },
+              { name: "Unity", rating: 3 },
+              { name: "Git", rating: 3 },
+              { name: "Java", rating: 2 },
+              { name: "HLSL", rating: 1 },
+              { name: "C++", rating: 1 },
+              { name: "C", rating: 1 },
+            ],
+          },
+          {
             heading: "Background",
             text: `
             I’m a game programmer based in Hamburg / Germany, focused on building systems, tools and gameplay logic.<br>
@@ -446,18 +458,6 @@
             For me, game development is a blend of problem-solving, teamwork, and playful experimentation! Paired with a constant drive to explore new coding 
             techniques, design ideas, and ways to grow my skills. That’s what keeps me excited to open my editor every day.
             `,
-          },
-          {
-            heading: "Technical Experience",
-            skills: [
-              { name: "C#", rating: 3 },
-              { name: "Unity", rating: 3 },
-              { name: "Git", rating: 3 },
-              { name: "Java", rating: 2 },
-              { name: "HLSL", rating: 1 },
-              { name: "C++", rating: 1 },
-              { name: "C", rating: 1 },
-            ],
           },
           {
             heading: "Tools & Middleware",
@@ -584,7 +584,7 @@
           about: `
             <strong>Developed</strong>: by Neox studios<br>
             <strong>Released</strong>: 05.26.2023<br>
-            <strong>Available</strong>: Steam, Nintendo Switch<br>`,
+            <strong>Available</strong>: <a href="https://store.steampowered.com/app/1585650/OrbWars/">Steam</a>, Nintendo Switch<br>`,
           whatIDid: `
               I joined the project during its later stages and began onboarding by addressing minor bugs, including several networking-related issues. 
               Through this, I gained experience working with a multiplayer networking solution for Unity.<br><br>
@@ -610,10 +610,11 @@
           about: `
             <strong>Developed</strong>: by Neox studios<br>
             <strong>Released</strong>: TBA<br>
-            <strong>Available</strong>: Steam<br>`,
+            <strong>Available</strong>: <a href="https://store.steampowered.com/app/2682630/Timeshift_Detective/">Steam</a><br>`,
           whatIDid: `I joined the project during its early stages, contributing feedback and ideas for the overall game design alongside my programming work. 
           One of my main focuses was on case creation,
-          determining what hints players would receive and when, ensuring information was revealed at the right moments to support gameplay flow.<br><br>
+          determining what hints players would receive, ensuring information was revealed at the right moments.<br><br>
+          
           Over the course of development, I implemented several reusable systems intended for multiple cases, including:
 
           <ul>
@@ -634,7 +635,6 @@
           img: "Assets/Images/punchypirates.gif",
           summary: `A chaotic rougelike multiplayer game. Defend your gold from greedy goblins and keep your ship afloat to collect all map pieces for the forgotten treasure!<br>
                     Take a look at our <a href="https://www.youtube.com/watch?v=vHfFEnxJZSk">Trailer</a>`,
-
           about: `As a study project for our Games Master program, we developed a vertical slice where players defend their gold from goblins 
           while repairing their ship whenever sharks create holes.<br>
           The project followed a non-lethal, kid-friendly approach, aiming to create a game that could be enjoyed by the whole family,
@@ -652,7 +652,7 @@ Our approach was successfully validated at the Baltic Games Fest, where many att
           Difficulty is determined by the length of the chosen route, encouraging strategic decision-making on our open map.<br><br>
 
           To select a route, players kick the map table and choose which island to visit. They must decide between four reward types:
-          additional gold for their treasure, repairing their ship, upgrading their ship, or taking a gamble on a “?” island, which hides the true reward.<br>
+          repairing or upgrading their ship, additional gold for their treasure or taking a gamble on a “?” island, which hides the true reward.<br>
           Players also need to manage their resources carefully, balancing upgrades and repairs to ensure they have enough gold to purchase the map piece at the end of the run.<br><br>
 
           Once the round begins, the ship sets sail and enemies appear: one attempts to steal players’ gold, another bites holes in the ship, and a third targets the players directly, 
@@ -672,14 +672,14 @@ Our approach was successfully validated at the Baltic Games Fest, where many att
           `,
 
           about: `
-            This system started life as my bachelor’s thesis project for <strong>Time Shift Detective</strong> by Neox Studios. 
+            This system started life as my bachelor’s thesis project for Time Shift Detective by Neox Studios. 
             It tackles one of the sneakiest problems in game cinematography: cameras that clip through walls, props, or wandering NPCs. 
             Characters moving around? Walls suddenly in the way? This system politely handles it before the player ever notices.
           `,
 
           howItWorks: `
             You set up each shot just to your desires, position the camera where you want it, tweak any Cinemachine settings until it feels right, and save. 
-            The system stores your setup in a <strong>ScriptableObject</strong> for quick reuse.<br><br>
+            The system stores your setup in a ScriptableObject for quick reuse.<br><br>
                            
             <img src="Assets/Images/CameraSystemDetails/Setup01.png" 
             alt="Camera setup in Unity" 
@@ -720,20 +720,20 @@ Our approach was successfully validated at the Baltic Games Fest, where many att
         {
           title: "Water Shader",
           img: "Assets/Images/watershader.gif",
-          summary: `Custom shader to create realistic water effects using Unity's shader graph with custom hsls functions.<br>
-             Feel free to take a look at <a href="https://gitlab.com/Mr.Mark/watershader">the shader</a>.`,
+          summary: `Custom shader to create realistic water effects using Unity's shader graph with custom hlsl functions.<br>
+             Feel free to take a look at the <a href="https://gitlab.com/Mr.Mark/watershader">shader</a>.`,
           about: `A water shader capable of simulating waves, water depth, underwater distortion, underwater fog, intersecting foam, and distorted surface foam. 
           This shader was an assignment project for my master’s.`,
           howItWorks: `The water shader starts by calculating the depth of objects relative to the water plane in world space. This value determines how far under the water an object is, 
           independent of camera position, and is used to interpolate between shallow and deep water colors, creating a smooth gradient effect.<br>
                     
             <img src="Assets/Images/WaterShader/Shader01.png" 
-                        alt="Baltic Games Fest" 
+                        alt="Depth check" 
                         style="width:100%; border-radius:8px; margin:10px 0;">
             <br><br>
             For underwater distortion, the shader reuses the depth calculation to determine whether an object is above or below the surface. Using UV maps combined with a moving noise texture, it generates a dynamic distortion effect.
 
-            Surface foam is added using a simple texture applied to the plane’s face. I implemented a distortion function in HLSL to simulate interaction with the waves, along with intersection foam.<br> 
+            Surface foam is added using a simple texture applied to the plane’s face. I implemented a distortion function in hlsl to simulate interaction with the waves, along with intersection foam.<br> 
             The intersection foam uses a depth-based trick: it samples object depth along the camera direction and applies another noise texture cut off by the depth value, 
             allowing the foam to fade naturally where objects intersect the water.<br> 
                     
@@ -761,15 +761,15 @@ Our approach was successfully validated at the Baltic Games Fest, where many att
         {
           title: "The Morse Game",
           img: "Assets/Images/morsegame.jpg",
-          summary: `A one-button game where the player needs to send Morse codes. A display shows the current code, later the dots and dashes start to disappear or negate.`,
+          summary: `A one-button game where the player needs to send morse codes. A display shows the current code, later the dots and dashes start to disappear or negate.`,
           about: `This game was created as part of my master's study program.<br>
           The challenge was to create a one-button game, the rest was up to us. 
           We got the chance to exhibit this game at a play party in our Games Lab.<br> 
           You can play our game on <a href="https://deemodev.itch.io/the-morse-game">itch.io!</a>`,
           howItWorks: `
-          Players start the game by carefully reading the instructions and then begin sending Morse messages within a limited time window. 
+          Players start the game by carefully reading the instructions and then begin sending morse messages within a limited time window. 
           The game gradually increases in speed as players progress.<br> 
-          Early messages are straightforward, but soon dots and dashes begin to invert: a dash may require a dot input instead. 
+          Early messages are straightforward. Soon dots and dashes begin to invert: a dash may require a dot input instead. 
           After a few rounds with this new mechanic, some dots and dashes start to disappear entirely.<br> 
           Players must quickly remember and adapt to the changing inputs, determining whether a missing dot was inverted or a dash, 
           testing both memory and reaction under increasing pressure.
@@ -781,16 +781,16 @@ Our approach was successfully validated at the Baltic Games Fest, where many att
           img: "Assets/Images/Aurora.gif",
           summary: `Terraform a little planet to fit your needs while living on it. This third-person adventure is about terraforming and exploring.<br> 
                   Disclaimer: This project is a work in progress!`,
-          about: `This is a private project I started and built a concept for. I left the idea of creating a small game out of it behind and used the project to learn about mesh generation and play around with some features I got interested in.<br><br>
-                  The planet generation code is not mine! I used <a href="https://github.com/bart1259/UnityHexPlanet">this repo</a>. I implemented the generation code and learned some things about mesh generation.<br> 
-                  With this I created a mesh generation code for the map in <b>PunchyPirates</b>.`,
+          about: `This is a private project I started and built a concept for. I left the idea of creating a small game behind and used the project to learn about mesh generation and play around with some features I got interested in.<br><br>
+                  The planet generation code is <b>not mine!</b> I used this <a href="https://github.com/bart1259/UnityHexPlanet">repo</a>.<br> 
+                  With this I created a mesh generation code for the map in PunchyPirates.`,
           howItWorks: `
             I updated the generation system by restructuring how tiles are stored and how they reference their chunks and adjacent tiles.
             This allowed me to implement in-game tools for players, such as raising or lowering single or multiple tiles, and flattening surrounding 
             tiles to match the height of a central tile.<br>
 
-            Additionally, I added prop and environment generation for the planet. I also implemented a camera tool that allows players to scan materials, 
-            once identified, the camera displays the material name when aimed at the target.<br><br>
+            Additionally, I added prop and environment generation for the planet. I also implemented a camera tool that allows players to scan materials. 
+            Once identified, the camera displays the material name when aimed at the target.<br><br>
 
             <img src="Assets/Images/Aurora/PropGeneration.png" 
             alt="Camera setup in Unity" 
@@ -804,8 +804,8 @@ Our approach was successfully validated at the Baltic Games Fest, where many att
           summary: `Hidden sensors in a real room send a signal that triggers in-game trash to spawn. From time to time, someone needs to do the job and sort the three different trash types in their belonging bin.`,
           about: `This project is part of my master's study program. We had the guideline to make any game, but with unusual inputs.<br> 
                   We used a default Oculus VR headset for the actual gameplay of sorting the trash in the different bins. 
-                  For trash to spawn, we used different sensors connected to an Arduino that sends the signal via WiFi to the PC the game runs on, wherein-game trash spawns. 
-                  Wheneverthe trash in the game is too much, the Trash-o-meter starts its sirens, signaling that someone has to take action and sort the trash.<br><br>`,
+                  For trash to spawn, we used different sensors connected to an Arduino that sends the signal via WiFi to the PC the game runs on, where in-game trash spawns. 
+                  When ever the trash get's too much, the Trash-o-meter starts its sirens, signaling that someone has to take action and sort the trash.<br><br>`,
           howItWorks: `
           The sensors send input signals that are received by the PC running the game. The PC interprets these signals as a spacebar press, 
           which we used in Unity to spawn trash.<br><br>
@@ -813,7 +813,7 @@ Our approach was successfully validated at the Baltic Games Fest, where many att
           <img src="Assets/Images/TrashGame/Sensors.png" 
           alt="Camera setup in Unity" style="width:100%; border-radius:8px; margin:10px 0;">
 
-          Players must sort green, purple, and blue trash into their corresponding bins. In VR, players aim the controller at the trash and hold the grab button to collect it. 
+          Players must sort green, purple and blue trash into their corresponding bins. In VR, players aim the controller at the trash and hold the grab button to collect it. 
           The game’s physics system makes throwing and sorting objects dynamic and engaging, adding an extra layer of challenge and fun.<br><br>
 
                 <img src="Assets/Images/TrashGame/Lab_Full.png" 
